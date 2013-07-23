@@ -1,0 +1,20 @@
+<table>
+    <tr>
+        <th class="label">Date, Time</th>
+        <th class="label">Comment</th>
+        <th class="label">Note</th>
+        <th class="label">Remark</th>
+    </tr>
+
+    <tr ng-repeat="item in items">
+        <td>{{item.datetime}}</td>
+        <td>
+            <div click-to-edit="item.comment" save-function="saveEditor()" class="editable">{{item.comment}}</div>
+        </td>
+        <td>
+            <div click-to-edit="item.note" save-function="saveEditor()" class="editable"> {{item.note}}</div>
+        </td>
+        <td>{{item.remark}}</td>
+        <td><a href="#/items/{{item.id}}">Details</a></td>
+    </tr>
+</table>
