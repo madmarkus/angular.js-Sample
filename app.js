@@ -1,4 +1,4 @@
-app = angular.module('planner', []).
+var app = angular.module('planner', []).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/items', {templateUrl: 'item-list.html', controller: ListCtrl}).
@@ -28,7 +28,7 @@ app.directive("clickToEdit", function() {
             value: "=clickToEdit",
             saveCallback: "&saveFunction"
         },
-        controller: function($scope) {
+        controller: function($scope, $timeout) {
             $scope.view = {
                 editableValue: $scope.value,
                 editorEnabled: false
@@ -46,10 +46,10 @@ app.directive("clickToEdit", function() {
             $scope.save = function() {
                 $scope.value = $scope.view.editableValue;
                 $scope.disableEditor();
-                $scope.saveCallback();
+                $timeout(function() {
+                  $scope.saveCallback();  
+                });                
             };
         }
     };
 });
-
-

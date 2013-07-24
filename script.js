@@ -13,7 +13,7 @@ function ListCtrl($scope, $http) {
 
     $scope.saveItem = function (w) {
         console.log("Attempt to safe: ");
-        console.log(w);       
+        console.log(angular.toJson(w)); //printing json to avoid modification of the output
         $http.post("http://localhost:8888", w, {}).success(function () {
                 console.log("post successfully sent");
         }).error(function (data, status, headers, config) {
